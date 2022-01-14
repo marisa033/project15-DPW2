@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
+use App\Models\Product;
 
 class ClientController extends Controller
 {
@@ -12,7 +12,7 @@ class ClientController extends Controller
   function showshop()
   {
     
-    $data['list_produk'] = Produk::paginate(4);
+    $data['list_produk'] = Product::paginate(4);
     return view('client.shop', $data);
   }
 
@@ -20,7 +20,7 @@ class ClientController extends Controller
   {
     $nama = request('nama');
     $data['nama'] = $nama;
-    $data['list_produk'] = Produk::where('nama', 'like', "%$nama%")->get();
+    $data['list_produk'] = Product::where('nama', 'like', "%$nama%")->get();
 
     return view('client.shop', $data);
   }
@@ -32,7 +32,7 @@ class ClientController extends Controller
     $data['harga_min'] = $harga_min;
     $data['harga_max'] = $harga_max;
 
-    $data['list_produk'] = Produk::whereBetween('harga', [$harga_min, $harga_max])->get();
+    $data['list_produk'] = Product::whereBetween('harga', [$harga_min, $harga_max])->get();
     return view('client.shop', $data);
   }
 
@@ -50,7 +50,7 @@ class ClientController extends Controller
     return view('client.about');
   }
 
-  function showprodukshop(Produk $produk)
+  function showprodukshop(Product $produk)
   {
 
     $data['produk'] = $produk;

@@ -83,7 +83,7 @@
                                      <div class="col-lg-3 col-sm-3">
                               <div class="box_main">
                                              <img src="{{url("public/$produk->foto")}}" style="width:200px;height:250px;">
-                                            <a href="{{ url('/produkshop', $produk->id) }}"
+                                            <a href="{{ url('/produkshop', $produk->uuid) }}"
                                             class="h3 text-decoration-none">{{ $produk->nama }}</a>
                                             <hr>
                                             <p><h4>Stok :{{ $produk->stok }}</h4></p>

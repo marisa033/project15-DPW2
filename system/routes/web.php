@@ -30,7 +30,13 @@ Route::get('dashboard/{status}', [HomeController::class, 'Showberanda']);
 
 // CRUD
 // login as Pengguna
-Route::prefix('admin')->middleware('auth:pengguna')->group(function(){
+// Route::prefix('admin')->middleware('auth:pengguna')->group(function(){
+//    Route::resource('produk', ProdukController::class);
+//  Route::resource('user', UserController::class);
+//    Route::post('produk/filter', [ProdukController::class, 'filter']);
+// });
+
+Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::resource('produk', ProdukController::class);
     Route::resource('user', UserController::class);
     Route::post('produk/filter', [ProdukController::class, 'filter']);
@@ -41,18 +47,18 @@ Route::get('register', function () {
 });
 
 
-Route::get('admin/beranda', [HomeController::class, 'showBeranda']);
-Route::get('admin/profil', [HomeController::class, 'showProfil']);
-Route::get('admin/kategori', [HomeController::class, 'showKategori']);
+//Route::get('admin/beranda', [HomeController::class, 'showBeranda']);
+//Route::get('admin/profil', [HomeController::class, 'showProfil']);
+//Route::get('admin/kategori', [HomeController::class, 'showKategori']);
 
-Route::get('test/{produk}/{hargaMin?}/{hargaMax?}', [HomeController::class, 'test']);
+//Route::get('test/{produk}/{hargaMin?}/{hargaMax?}', [HomeController::class, 'test']);
 
 // login as Admin
-Route::prefix('admin')->middleware('auth:admin')->group(function(){
-    Route::post('produk/filter', [ProdukController::class, 'filter']);
-    Route::resource('produk', ProdukController::class);
-    Route::resource('user', UserController::class);
-});
+//Route::prefix('admin')->middleware('auth:admin')->group(function(){
+//   Route::post('produk/filter', [ProdukController::class, 'filter']);
+//  Route::resource('produk', ProdukController::class);
+//    Route::resource('user', UserController::class);
+// });
 
 
 // tampilan depan

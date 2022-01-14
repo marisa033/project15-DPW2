@@ -9,7 +9,7 @@ class Produk extends Model {
 
 	use ProdukAttributes, ProdukRelations;
 	
-	protected $table = 'Produk';
+	protected $table = 'produk';
 
 	protected $casts = [
 		'created_at' => 'datetime',

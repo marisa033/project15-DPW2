@@ -19,8 +19,8 @@ class User extends Authenticatable
         return $this->hasOne(UserDetail::class, 'id_user');
     }
 
-    function produk(){
-        return $this->hasMany(Produk::class, 'id_user');
+    function product(){
+        return $this->hasMany(Product::class, 'id_user');
     }
 
     function getJenisKelaminStringAttribute(){

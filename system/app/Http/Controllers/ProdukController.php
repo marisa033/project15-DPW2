@@ -9,7 +9,7 @@ use App\Models\Product;
 class ProdukController extends Controller {
 	function index(){
 		$user = request()->user();
-		 $data['list_produk']= Product::all();
+		 $data['list_produk']= $user->product;
 		return view('admin.produk.index', $data);
 
 	}
@@ -21,10 +21,10 @@ class ProdukController extends Controller {
 
 		$produk = new Product();
 		$produk->id_user = request()->user()->id;
-		$produk['nama'] = request('nama');
-    	$produk['harga'] = request('harga');
-		$produk['stok'] = request('stok');
-		$produk['detail'] = request('detail');
+		$produk->nama = request('nama');
+    	$produk->harga = request('harga');
+		$produk->stok = request('stok');
+		$produk->detail = request('detail');
 		$produk->save();
 
 		$produk->handleUploadFoto();
@@ -43,10 +43,10 @@ class ProdukController extends Controller {
 
 	}
 	function update(Product $produk){
-		$produk['nama'] = request('nama');
-    	$produk['harga'] = request('harga');
-		$produk['stok'] = request('stok');
-		$produk['detail'] = request('detail');
+		$produk->nama = request('nama');
+    	$produk->harga = request('harga');
+		$produk->stok = request('stok');
+		$produk->detail = request('detail');
 		$produk->save();
 
 		$produk->handleUploadFoto();
@@ -54,7 +54,7 @@ class ProdukController extends Controller {
 		return redirect('admin/produk')->with('success', 'Data Berhasil Diedit');
 
 	}
-	function destroy(Produk $produk){
+	function destroy(Product $produk){
 		$produk->handleDelete();
 		$produk->delete();
 		return redirect('admin/produk')->with('danger', 'Data Berhasil Dihapus');
